@@ -12,7 +12,8 @@ function detectAnagrams(string $word, array $candidates) : array
 
 function anagramOf(string $word) : closure
 {
-    return function(string $w) use ($word) : bool {
-        return $w != $word && count_chars($w) == count_chars($word);
+    $word_char_count = count_chars($word);
+    return function(string $w) use ($word, $word_char_count) : bool {
+        return $w != $word && count_chars($w) == $word_char_count;
     };
 }
